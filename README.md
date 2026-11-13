@@ -4,11 +4,13 @@
 
 # 🛡️ Awesome Remote Device Management & Remote Wipe
 
+<a href="https://github.com/ishandutta2007/Awesome-Awesomeesomeesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a><a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/ishandutta2007/Awesome-Remote-Device-Management-Remote-Wipe/pulls)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ishandutta2007/Awesome-Remote-Device-Management-Remote-Wipe/graphs/commit-activity)
 [![Topics](https://img.shields.io/badge/Topics-MDM%20%7C%20UEM%20%7C%20Remote%20Wipe-blue.svg)](#-table-of-contents)
+<a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
 
 > 🌐 A curated directory of top-tier **Remote Device Management (MDM/UEM)** and **Remote Wipe** solutions — covering commercial enterprise SaaS platforms, cyber-resilient data sanitization tools, and open-source self-hosted fleet controllers for distributed workforces.
 
@@ -24,6 +26,8 @@
 - [🟦 SaaS / Hosted Platforms](#-saas--hosted-platforms)
 - [🟩 Open-Source Software](#-open-source-software)
 - [⚖️ Comparison at a Glance](#️-comparison-at-a-glance)
+- [💖 Support](#-support)
+- [📈 Star History](#-star-history)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
 
@@ -87,6 +91,24 @@ Self-hosted, community-audited device management frameworks and remote wipe agen
 | **linDM** | Open Source | Self-Hosted | LUKS / TPM Crypto-Erasure | ❌ (Full Crypto-Wipe) | ❌ | Linux (Debian, Ubuntu, Fedora, RHEL, Arch) | Dedicated enterprise Linux developer machines |
 | **SVT-MDM** | Open Source | Self-Hosted | Device Admin Factory Wipe | ❌ (Full Reset) | ❌ | Android | Lightweight Android edge devices |
 | **DAWO Sextant** | EUPL-1.2 | Self-Hosted | Declarative Lock Intent | ❌ (PoC Phase) | ❌ | NixOS | Sovereign declarative NixOS infrastructure |
+
+---
+
+## 💖 Support
+
+Thank you so much for exploring and supporting **Awesome Remote Device Management & Remote Wipe**! 🙏
+
+If you find this repository valuable:
+- ⭐ **Star** this repository to show your appreciation and help others discover it.
+- 🍴 **Fork** it to keep your own reference and contribute improvements back.
+- 📢 **Share** it with fellow system administrators, security analysts, and DevOps engineers.
+- ☕ **Buy me a coffee / Sponsor:** If you'd like to support ongoing maintenance and new curated lists, consider sponsoring via the [GitHub Sponsor Dashboard](https://github.com/sponsors/ishandutta2007).
+
+---
+
+## 📈 Star History
+
+[![Star History Chart](https://www.star-history.com/svg?repos=ishandutta2007/Awesome-Remote-Device-Management-Remote-Wipe&type=date&legend=top-left)](https://www.star-history.com/#ishandutta2007/Awesome-Remote-Device-Management-Remote-Wipe&type=date&legend=top-left)
 
 ---
 
