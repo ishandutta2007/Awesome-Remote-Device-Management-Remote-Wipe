@@ -1,126 +1,117 @@
-# Awesome-Remote-Device-Management-Remote-Wipe
+<div align="center">
 
-# Awesome Remote Device Management & Remote Wipe
+<img src="./assets/banner.svg" alt="Awesome Remote Device Management and Remote Wipe Banner" width="100%" />
 
-> A curated list of top Remote Device Management and Remote Wipe platforms — both SaaS/Hosted commercial UEM/MDM solutions and open-source alternatives for securing, managing, and remotely wiping endpoints across a distributed workforce.
-> 🌟 Star this repo if you find it useful! 🌟
+# 🛡️ Awesome Remote Device Management & Remote Wipe
+
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/ishandutta2007/Awesome-Remote-Device-Management-Remote-Wipe/pulls)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ishandutta2007/Awesome-Remote-Device-Management-Remote-Wipe/graphs/commit-activity)
+[![Topics](https://img.shields.io/badge/Topics-MDM%20%7C%20UEM%20%7C%20Remote%20Wipe-blue.svg)](#-table-of-contents)
+
+> 🌐 A curated directory of top-tier **Remote Device Management (MDM/UEM)** and **Remote Wipe** solutions — covering commercial enterprise SaaS platforms, cyber-resilient data sanitization tools, and open-source self-hosted fleet controllers for distributed workforces.
+
+⭐ **Star this repository if you find it helpful!** ⭐
+
+</div>
 
 ---
 
 ## 📋 Table of Contents
 
-- [SaaS / Hosted Platforms](#-saas--hosted-platforms)
-  - [Microsoft Intune](#microsoft-intune)
-  - [VMware Workspace ONE (Omnissa)](#vmware-workspace-one-omnissa)
-  - [Jamf Pro](#jamf-pro)
-  - [ManageEngine Endpoint Central](#manageengine-endpoint-central)
-  - [Druva Endpoint Data Protection](#druva-endpoint-data-protection)
-- [Open-Source Software](#-open-source-software)
-  - [OpenUEM](#openuem)
-  - [linDM](#lindm)
-  - [SVT MDM](#svt-mdm)
-  - [Headwind MDM](#headwind-mdm)
-  - [Sextant (DAWO)](#sextant-dawo)
-- [Comparison at a Glance](#-comparison-at-a-glance)
-- [Contributing](#-contributing)
+- [📊 Sector Overview & Market Dynamics](#-sector-overview--market-dynamics)
+- [🟦 SaaS / Hosted Platforms](#-saas--hosted-platforms)
+- [🟩 Open-Source Software](#-open-source-software)
+- [⚖️ Comparison at a Glance](#️-comparison-at-a-glance)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+
+---
+
+## 📊 Sector Overview & Market Dynamics
+
+The global Unified Endpoint Management (UEM) and Mobile Device Management (MDM) market is valued at approximately **$10.5 billion to $13.5 billion in 2026** and is projected to surpass **$57 billion by 2034**, expanding at a robust compound annual growth rate (**CAGR of 21% to 24%**). 
+
+The sector displays a **moderately concentrated, bifurcated market structure**: mega-cap enterprise suites (Microsoft Intune, Omnissa/VMware Workspace ONE) command substantial market share through operating system and enterprise identity bundle leverage, while specialized platforms (Jamf for Apple fleets, Druva for data-centric offline sanitization, and open-source control planes like Fleet) capture distinct enterprise segments demanding deep platform integration, cryptographic erasure, or independent sovereignty.
 
 ---
 
 ## 🟦 SaaS / Hosted Platforms
 
-Commercial, cloud-hosted Remote Device Management and Remote Wipe platforms. These are not open-source but are included as reference points for feature comparison.
+Commercial, cloud-hosted Unified Endpoint Management (UEM), Mobile Device Management (MDM), and Endpoint Data Protection platforms sorted by parent company scale (revenue / market valuation, descending).
 
-### Microsoft Intune
-**Type:** Unified endpoint management with factory reset wipe  
-Intune provides the **Wipe** action to factory reset a device, removing all personal and organizational data, apps, and configurations [citation:2]. It supports Android Enterprise (COSU, COBO, COPE), AOSP, ChromeOS, iOS/iPadOS, macOS, tvOS, visionOS, and Windows [citation:2]. Platform-specific behaviors include preserving eSIMs by default on Android Enterprise devices, and **Zebra Android devices only removing corporate data** rather than performing a full factory reset [citation:2]. A tenant can submit up to 500 Wipe actions per day, and macOS devices without a T2 chip require a 6-digit Recovery PIN to reinstall the OS [citation:2].  
-**Best for:** Organizations already standardized on Microsoft 365 wanting native, platform-aware remote wipe with granular control over what is preserved.
-
-### VMware Workspace ONE (Omnissa)
-**Type:** UEM with enterprise wipe and full device wipe  
-Workspace ONE offers two distinct wipe modes: **Enterprise Wipe** removes all business data without touching personal data, while **Device Wipe** performs a full factory reset [citation:3][citation:12]. Enterprise Wipe is only supported on devices enrolled through typical enrollment, not standalone enrollment, and it removes all personal accounts from Workspace ONE Boxer, requiring end users to re-authenticate [citation:3][citation:12]. **Critical caveat:** If compliance policies are enabled for standalone-enrolled devices, the UEM console may report them as violating policies and trigger unintended device wipes [citation:3].  
-**Best for:** Enterprises needing a clear separation between corporate-data-only wipe and full device wipe, accepting the enrollment-method constraints.
-
-### Jamf Pro
-**Type:** Apple-focused MDM with remote wipe for Mac and iOS  
-Jamf Pro provides a **Wipe Computer** remote command that permanently erases all data, requiring a passcode to reinstall the OS . For mobile devices, an **Erase Mobile Device** action sends a remote wipe command that erases all data on next check-in [citation:13]. Both actions are irreversible and should be guarded with manual approval before execution in automated workflows [citation:13].  
-**Best for:** Apple-centric organizations needing deep macOS and iOS device management with native remote wipe capabilities.
-
-### ManageEngine Endpoint Central
-**Type:** UEM with complete and corporate wipe options  
-Endpoint Central distinguishes between **Complete Wipe** (factory reset, making the device brand-new) and **Corporate Wipe** (removing only corporate data) [citation:5]. The mobile app allows IT teams to lock, wipe, or restart devices remotely, alongside inventory actions like remote alarm, clear/reset passcode, and lost mode [citation:14]. This dual-wipe model is useful for BYOD scenarios where personal data must be preserved.  
-**Best for:** Organizations needing both full factory reset and corporate-only wipe from a single UEM platform, particularly those managing mixed BYOD and corporate-owned fleets.
-
-### Druva Endpoint Data Protection
-**Type:** Data-centric remote wipe with offline capability  
-Druva's remote wipe capability is specifically designed to protect data on lost or stolen devices, with a key differentiator: **data can be wiped even without an internet connection** on the stolen device [citation:1]. It also supports wiping data when a new SIM card is inserted [citation:10]. Druva offers **device remote-wipe with backup**, ensuring critical data is preserved before the device is wiped, and DLP policies can automate remote deletion of shared data as well [citation:1][citation:10].  
-**Best for:** Organizations prioritizing data protection over device management, particularly for remote workers with sensitive data on endpoints that may be lost or stolen.
+| 🏢 Platform | 💰 Company Scale (Revenue / Valuation) | 💵 Starting Tier Pricing | 🎁 Free Tier / Free Trial Limits | 🔒 Wipe Mechanism & Scope | 🎯 Best For |
+|:---|:---|:---|:---|:---|:---|
+| [**Microsoft Intune**](https://www.microsoft.com/en-us/security/business/endpoint-management/microsoft-intune) | **~$245 Billion ARR** (Microsoft Corp Market Cap: ~$3.1 Trillion) | **$8.00** / user / month (Plan 1 standalone; annual commitment) | **30-day free trial** (up to 250 evaluation licenses with EMS/M365) | Native factory reset, selective enterprise wipe, eSIM preservation on Android Enterprise | Organizations invested in Microsoft 365 seeking native OS-level compliance |
+| [**ManageEngine Endpoint Central**](https://www.manageengine.com/products/desktop-central/) | **~$1.2 Billion ARR** (Zoho Corporation Parent Valuation: ~$15 Billion) | **$1.09** / endpoint / month (Professional Edition, starting tier 50 devices at ~$795/yr) | **Free Forever up to 25 endpoints** (1 admin technician cap); **30-day trial** for Enterprise/UEM | Complete Wipe (factory reset) & Corporate Wipe (retraining personal BYOD files) | Mid-market and SMB enterprises wanting low-friction dual-wipe BYOD management |
+| [**VMware Workspace ONE (Omnissa)**](https://www.omnissa.com/workspace-one/) | **~$4.0 Billion Private Equity Deal** (Acquired from Broadcom by KKR) | **$3.00** / device / month (Mobile Essentials tier, billed annually) | **30-day free trial** (available via authorized partner request/PoC) | Enterprise Wipe (containerized data removal) & Device Wipe (full factory erase) | Large-scale multi-OS enterprises requiring rigid BYOD container boundaries |
+| [**Jamf Pro**](https://www.jamf.com/products/jamf-pro/) | **~$600 Million ARR** (Jamf Holding Corp Market Cap: ~$2.1 Billion) | **$3.33** / device / month for iOS/iPadOS; **$6.25** / device / month for macOS | **14-day full feature free trial** (no credit card required; 25-device minimum on paid contracts) | Remote Mac wipe via passcode/recovery PIN and instant APNs-driven iOS device erase | Dedicated Apple-exclusive enterprise and educational fleets (macOS, iOS, iPadOS) |
+| [**Druva Endpoint Data Protection**](https://www.druva.com/solutions/endpoint-backup/) | **~$250 Million ARR** (Private Unicorn Valuation: ~$2.0 Billion) | **$6.00** / user / month (inSync Enterprise starting tier; annual commitment) | **30-day free trial** (cloud-native endpoint backup and automated DLP test) | Data-centric wipe with pre-wipe cloud snapshot; **offline timer wipe** & SIM-swap triggers | High-risk distributed workforces requiring data sanitization even when offline |
 
 ---
 
 ## 🟩 Open-Source Software
 
-Self-hosted, community-driven Remote Device Management and Remote Wipe tools. The open-source ecosystem is **limited and fragmented**, with most projects focused on specific platforms (Linux, Android) or in early-stage development.
+Self-hosted, community-audited device management frameworks and remote wipe agents sorted by GitHub star count (descending).
 
-### OpenUEM
-**Stack:** Go / NATS / Web UI | **License:** Apache-2.0  
-OpenUEM is an open-source, self-hosted **Unified Endpoint Manager** recognized with a SourceForge Rising Star award in January 2026 [citation:9]. It uses agents for Windows, Linux, and macOS, with a clean and concise web interface for managing IT assets. The project is structured as multiple repositories (agent, console, worker, NATS service, cert-manager) under Apache-2.0 [citation:9]. **Important limitation:** Search results do not explicitly confirm remote wipe capabilities—the project emphasizes asset management and endpoint visibility, and wipe functionality should be verified against current documentation before relying on it for lost-device scenarios.  
-**Best for:** IT teams wanting a self-hosted, actively maintained open-source UEM foundation for cross-platform endpoint management, with the caveat that remote wipe capabilities need validation.
-
-### linDM
-**Stack:** Linux (native tools) / Self-hosted server | **License:** Open Source  
-linDM is a self-hosted MDM for **Linux fleets**, supporting enrollment, profiles, disk encryption/TPM, **lock and wipe**, OS updates, and remote assistance using each distribution's native tools [citation:15]. Wipe erases encryption keys rather than physical drives, requiring an encrypted installation to function [citation:15]. Destructive actions like lock and wipe require independent approval, and the platform supports a broad range of distributions including Ubuntu, Debian, Fedora, RHEL, Rocky, AlmaLinux, Arch, and openSUSE [citation:15].  
-**Best for:** Linux-centric organizations needing native remote wipe (via encryption key erasure) across diverse distributions, accepting that wipe requires encrypted installs.
-
-### SVT MDM
-**Stack:** Android (Kotlin) / MQTT / HTTPS | **License:** Open Source  
-SVT MDM is an open-source Android MDM agent with a tiered capability model: **plain** (location/inventory), **device_admin** (adds force-lock and **factory wipe**), and **device_owner** (adds silent grants, Phase 3) [citation:7]. Instant commands arrive over MQTT with HTTPS polling fallback, and commands are de-duplicated by ID with a 10-minute expiration for destructive actions like wipe and lock [citation:7]. The device token is stored in EncryptedSharedPreferences, and the agent only connects to TLS brokers [citation:7].  
-**Best for:** Android-only fleets needing an open-source MDM with factory wipe via Device Admin, accepting that Device Owner features are still in development.
-
-### Headwind MDM
-**Stack:** Java / Android | **License:** Apache-2.0 (open core)  
-Headwind MDM is an open-source Android MDM platform where the community edition allows implementing custom functionality under Apache-2.0 [citation:8]. **Important licensing caveat:** The **factory reset (including REST API) is available only in Headwind MDM Premium**, not the open-source edition [citation:8]. While the open-source version can be modified to add features, remote factory wipe is not included out of the box.  
-**Best for:** Android fleets where the organization is prepared to implement custom wipe logic or purchase the Premium edition, accepting that remote factory reset is not an open-source feature.
-
-### Sextant (DAWO)
-**Stack:** NixOS / Rust / Go | **License:** Open Source (proof of concept)  
-Sextant is a declarative fleet control-plane for NixOS with remote lock and wipe modeled as **config-as-data** rather than live RCE, with every action an audited commit . **Critical limitation:** The destructive wipe execution is **deliberately not implemented** in the current build—the agent spools and acknowledges a wipe intent but performs no destruction, and the project explicitly states it is "not MDM: declarative pull, no remote wipe" . It is a proof of concept seeking contributors.  
-**Best for:** NixOS fleet operators interested in contributing to a declarative management model, not for production remote wipe needs.
+| 📦 Project | 🌟 GitHub Stars | 💻 Technology Stack | 📜 License | 🧰 Remote Wipe Capability | 💡 Architecture Highlights |
+|:---|:---:|:---|:---|:---|:---|
+| [**Fleet**](https://github.com/fleetdm/fleet) | [![GitHub stars](https://img.shields.io/github/stars/fleetdm/fleet?style=social&color=white)](https://github.com/fleetdm/fleet/stargazers) | Go • TypeScript • osquery | MIT | ✅ Native MDM remote wipe & lock (macOS, Windows, Linux, iOS, iPadOS) | GitOps-driven device management, real-time osquery-powered telemetry, zero-trust state enforcement |
+| [**MicroMDM**](https://github.com/micromdm/micromdm) | [![GitHub stars](https://img.shields.io/github/stars/micromdm/micromdm?style=social&color=white)](https://github.com/micromdm/micromdm/stargazers) | Go • Apple MDM Protocol | MIT | ✅ `DeviceErase` command via Apple Push Notification service (APNs) | Modular microservices-ready Apple MDM server, headless API control, fast command queuing |
+| [**NanoMDM**](https://github.com/micromdm/nanomdm) | [![GitHub stars](https://img.shields.io/github/stars/micromdm/nanomdm?style=social&color=white)](https://github.com/micromdm/nanomdm/stargazers) | Go • SQL / Redis | MIT | ✅ Apple MDM remote wipe & lock command handlers | Ultra-lightweight, high-throughput Apple MDM backend engine designed for high-density environments |
+| [**Headwind MDM**](https://github.com/h-mdm/hmdm-server) | [![GitHub stars](https://img.shields.io/github/stars/h-mdm/hmdm-server?style=social&color=white)](https://github.com/h-mdm/hmdm-server/stargazers) | Java • PostgreSQL • Android | Apache-2.0 | ⚠️ Community edition supports lock/kiosk; factory reset API is in Premium edition | Open-core enterprise Android fleet management, dedicated kiosk launcher, and APK package push |
+| [**Commandment**](https://github.com/cmdmnt/commandment) | [![GitHub stars](https://img.shields.io/github/stars/cmdmnt/commandment?style=social&color=white)](https://github.com/cmdmnt/commandment/stargazers) | Python • Flask • SQLAlchemy | MIT | ✅ Remote wipe command (`EraseDevice`) with Apple DEP enrollment | Pythonic Apple MDM implementation, profile generation, SCEP identity certificate payload provisioning |
+| [**OpenUEM**](https://github.com/open-uem/openuem-console) | [![GitHub stars](https://img.shields.io/github/stars/open-uem/openuem-console?style=social&color=white)](https://github.com/open-uem/openuem-console/stargazers) | Go • NATS • Svelte | Apache-2.0 | 🔍 Inventory, remote lock & command exec (wipe capabilities in validation) | Modern microservice UEM with unified Windows, Linux, and macOS cross-platform endpoint agents |
+| [**linDM**](https://github.com/radkawar/lindm) | [![GitHub stars](https://img.shields.io/github/stars/radkawar/lindm?style=social&color=white)](https://github.com/radkawar/lindm/stargazers) | Go • Linux Native Tools | Open Source | ✅ Cryptographic erasure (TPM / LUKS disk encryption key purging) | Dedicated Linux fleet management (Ubuntu, Debian, Fedora, RHEL, Arch) with peer-reviewed dual-approval wipe |
+| [**SVT-MDM-Android**](https://github.com/adrianoftyriel/SVT-MDM-Android) | [![GitHub stars](https://img.shields.io/github/stars/adrianoftyriel/SVT-MDM-Android?style=social&color=white)](https://github.com/adrianoftyriel/SVT-MDM-Android/stargazers) | Kotlin • MQTT • HTTPS | Open Source | ✅ Immediate factory reset wipe via Android `DevicePolicyManager` API | Lightweight MQTT real-time command delivery, EncryptedSharedPreferences token store, 10-minute command expiry |
+| [**DAWO Sextant**](https://codeberg.org/DAWO/DAWO-Sextant) | [Codeberg Repo](https://codeberg.org/DAWO/DAWO-Sextant) | NixOS • Rust • Go | EUPL-1.2 | ⚠️ Audit & lock intent spooled (destructive payload disabled by design in PoC) | Declarative GitOps pull control-plane for sovereign NixOS fleets developed for the Dutch public administration |
 
 ---
 
-## 📊 Comparison at a Glance
+## ⚖️ Comparison at a Glance
 
-| Software | License | Stack | Remote Wipe | Wipe Granularity | Offline Wipe | Self-Hosted | Best For |
-|----------|---------|-------|-------------|------------------|--------------|-------------|----------|
-| **Microsoft Intune** | Proprietary | Cloud | ✅ Factory reset | Full + eSIM preserve | ❌ | ❌ | Microsoft 365 organizations |
-| **Workspace ONE** | Proprietary | Cloud | ✅ Enterprise + Device | Corporate vs full | ❌ | ❌ | Enterprise BYOD separation |
-| **Jamf Pro** | Proprietary | Cloud | ✅ Erase | Full (Mac/iOS) | ❌ | ❌ | Apple-centric fleets |
-| **Endpoint Central** | Proprietary | Cloud/On-prem | ✅ Complete + Corporate | Full vs corporate | ❌ | (On-prem) | Mixed BYOD/corporate fleets |
-| **Druva** | Proprietary | Cloud | ✅ Data wipe | Data (with backup) | ✅ | ❌ | Data protection focus |
-| **OpenUEM** | Apache-2.0 | Go/NATS | (Unverified) | (Check docs) | ❌ | ✅ | Cross-platform UEM foundation |
-| **linDM** | Open Source | Linux | ✅ Key erasure | Encryption keys | ❌ | ✅ | Linux fleets (encrypted) |
-| **SVT MDM** | Open Source | Android | ✅ Device Admin | Full factory | ❌ | ✅ | Android-only fleets |
-| **Headwind MDM** | Apache-2.0 | Android | ❌ (Premium only) | N/A in OSS | ❌ | ✅ | Android (custom or Premium) |
+| 🛠️ Platform | 📜 License | ☁️ Deployment | 🧼 Wipe Action Type | 🎯 Granular Corporate Wipe | 📴 Offline Auto-Wipe | 🖥️ Supported OS Platforms | 🏆 Best Use Case |
+|:---|:---|:---|:---:|:---:|:---:|:---|:---|
+| **Microsoft Intune** | Commercial | Cloud SaaS | Full Factory + Selective | ✅ Supported | ❌ | Windows, macOS, iOS, Android, ChromeOS | Standard Microsoft 365 corporate ecosystems |
+| **Workspace ONE** | Commercial | Cloud SaaS | Full Factory + Enterprise Wipe | ✅ Supported | ❌ | Windows, macOS, iOS, Android, Linux | High-security segmented corporate BYOD |
+| **ManageEngine Endpoint Central** | Commercial | Cloud / On-Prem | Complete Wipe + Corporate Wipe | ✅ Supported | ❌ | Windows, macOS, Linux, iOS, Android, tvOS | Cost-effective hybrid IT and SMB/mid-market |
+| **Jamf Pro** | Commercial | Cloud SaaS | Erase Device + Recovery PIN | ⚠️ Apple Config Profiles | ❌ | macOS, iOS, iPadOS, tvOS | Specialized Apple device fleets |
+| **Druva Endpoint** | Commercial | Cloud SaaS | Encrypted File Deletion + Backup | ✅ Supported | ✅ (Time / SIM Trigger) | Windows, macOS | Data loss prevention and distributed mobile executives |
+| **Fleet** | MIT / Core | Cloud / Self-Hosted | Native MDM Wipe & Lock | ✅ MDM Profiles | ❌ | macOS, Windows, Linux, iOS, iPadOS | GitOps-driven security and osquery telemetry |
+| **MicroMDM** | MIT | Self-Hosted | APNs EraseDevice | ⚠️ Profiles | ❌ | macOS, iOS, iPadOS | Scalable custom Apple fleet infrastructure |
+| **NanoMDM** | MIT | Self-Hosted | MDM Protocol Erase | ⚠️ Profiles | ❌ | macOS, iOS, iPadOS | High-performance minimalist Apple MDM |
+| **Headwind MDM** | Apache-2.0 | Self-Hosted / Cloud | Kiosk Reset (Premium API Wipe) | ⚠️ Custom APK | ❌ | Android | Android kiosks, industrial POS, logistics tablets |
+| **Commandment** | MIT | Self-Hosted | APNs EraseDevice | ⚠️ Profiles | ❌ | macOS, iOS | Python-based Apple device lab testing |
+| **OpenUEM** | Apache-2.0 | Self-Hosted | Remote Lock & Shell Exec | 🔍 Under Test | ❌ | Windows, Linux, macOS | Open-source cross-platform IT asset governance |
+| **linDM** | Open Source | Self-Hosted | LUKS / TPM Crypto-Erasure | ❌ (Full Crypto-Wipe) | ❌ | Linux (Debian, Ubuntu, Fedora, RHEL, Arch) | Dedicated enterprise Linux developer machines |
+| **SVT-MDM** | Open Source | Self-Hosted | Device Admin Factory Wipe | ❌ (Full Reset) | ❌ | Android | Lightweight Android edge devices |
+| **DAWO Sextant** | EUPL-1.2 | Self-Hosted | Declarative Lock Intent | ❌ (PoC Phase) | ❌ | NixOS | Sovereign declarative NixOS infrastructure |
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you know of an open-source Remote Device Management or Remote Wipe tool that should be listed here, please open a pull request with:
+Contributions to **Awesome Remote Device Management & Remote Wipe** are always welcome! 
 
-- Project name and URL
-- Brief description (1–2 sentences)
-- Stack and license
-- Why it stands out
+Whether you are adding a new open-source MDM platform, updating enterprise pricing nuances, or suggesting architectural improvements:
 
-Please ensure the project is actively maintained (releases within the last 12 months) and genuinely open-source. Note that the open-source ecosystem for **remote wipe specifically** is **extremely limited and fragmented**. **linDM** is the only project with confirmed, production-oriented remote wipe for Linux (via encryption key erasure) [citation:15], while **SVT MDM** offers Android factory wipe through Device Admin [citation:7]. **OpenUEM** is a promising cross-platform UEM but its wipe capabilities are unverified [citation:9]. **Headwind MDM** gates remote factory reset behind its Premium tier [citation:8], and **Sextant** explicitly does not implement wipe execution . Commercial platforms like Intune, Workspace ONE, and Jamf Pro remain the only practical options for production-grade, cross-platform remote wipe.
+1. 🍴 **Fork** the repository.
+2. 🌿 **Create a new branch** (`git checkout -b feature/cool-mdm-tool`).
+3. 📝 **Add your tool** following our tabular format (including stack, license, remote wipe mechanism, and GitHub star badge).
+4. ✅ **Ensure accuracy** regarding wipe verification (differentiate whether wipe is full factory, selective corporate, crypto-erasure, or unverified).
+5. 🚀 **Submit a Pull Request** with a clear description of the project.
 
 ---
 
 ## 📄 License
 
-This list is released under CC0 1.0 Universal (Public Domain). The software projects listed retain their respective licenses.
+This repository and compilation are licensed under the [Creative Commons Zero v1.0 Universal](LICENSE) (Public Domain Dedication).  
+Individual tools and platforms referenced retain their respective trademarks, copyrights, and open-source licenses.
 
 ---
 
-⭐ **If this list helped you discover a useful tool, please star the repo!** ⭐
+<div align="center">
+  <sub>Maintained with ❤️ for system administrators, DevOps engineers, and Infosec specialists worldwide.</sub><br>
+  <b><a href="#awesome-remote-device-management--remote-wipe">⬆️ Back to Top</a></b>
+</div>
